@@ -1,0 +1,8 @@
+p
+  => link_to Project.model_name.human(count: 2), projects_path
+  i.far.fa-chevron-right.fa-xs
+  =< @project.title
+
+hr
+
+= link_to Issue.model_name.human(count: 2), project_issues_path(@project)

@@ -1,0 +1,19 @@
+p
+  => link_to Project.model_name.human(count: 2), projects_path
+  i.far.fa-chevron-right.fa-xs
+  =<> link_to @project.title, project_path(@project)
+  i.far.fa-chevron-right.fa-xs
+  =< Issue.model_name.human(count: 2)
+
+hr
+
+- if @project.issues.any?
+  - @project.issues.each do |issue|
+    = link_to project_issue_path(@project, issue) do
+      h2 = issue.title
+- else
+  .d-flex.justify-content-center.mt-5
+    = image_tag 'undraw_no_data.svg', width: 200
+  p.text-center.mt-3.text-muted = Issue.model_name.human(count: 0)
+  .d-flex.justify-content-center.mt-3
+    = link_to t('.new'), new_project_issue_path(@project), class: 'btn btn-outline-success btn-sm'

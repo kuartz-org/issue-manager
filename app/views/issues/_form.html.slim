@@ -1,0 +1,11 @@
+= simple_form_for [@project, @issue] do |f|
+  .shadow-sm.p-3.bg-white.rounded.mt-3.mb-4
+    = f.input :title
+    = f.input :description
+
+    .d-flex.justify-content-end
+      - if @issue.persisted?
+        = link_to t('helpers.cancel'), project_issue_path(@project, @issue), class: 'btn btn-sm btn-light mr-3'
+      - else
+        = link_to t('helpers.cancel'), project_issues_path(@project), class: 'btn btn-sm btn-light mr-3'
+      = f.button :submit, class: 'btn btn-sm btn-success'

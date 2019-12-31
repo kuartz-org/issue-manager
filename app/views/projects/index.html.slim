@@ -1,0 +1,9 @@
+p = Project.model_name.human(count: 2)
+
+- @projects.each do |project|
+  = link_to project_path(project) do
+    h2 = project.title
+    p
+      - if project.issues.count.positive?
+        => project.issues.count
+      = Issue.model_name.human(count: project.issues.count)

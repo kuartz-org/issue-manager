@@ -1,10 +1,25 @@
-// Define variables for your color scheme
+// Colors from Tailwindcss
+// https://tailwindcss.com/docs/customizing-colors/#default-color-palette
 
-// For example:
-$red: #EE5F5B;
-$blue: #469AE0;
-$yellow: #FDB631;
-$orange: #E67E22;
-$green: #32B796;
-$black: #000000;
-$light-gray: #F4F4F4;
+$white:    #fff;
+$gray-100: #F7FAFC;
+$gray-200: #EDF2F7;
+$gray-300: #E2E8F0;
+$gray-400: #CBD5E0;
+$gray-500: #A0AEC0;
+$gray-600: #718096;
+$gray-700: #4A5568;
+$gray-800: #2D3748;
+$gray-900: #1A202C;
+$black:    #000;
+
+$red:        #F56565;
+$blue:       #4299E1;
+$yellow:     #ECC94B;
+$orange:     #ED8936;
+$green:      #48BB78;
+$black:      #000000;
+$light-gray: $gray-100;
+
+$pink-100:#FFF5F7;
+$pink-500: #ED64A6;

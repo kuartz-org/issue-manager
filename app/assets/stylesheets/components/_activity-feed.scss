@@ -1,0 +1,16 @@
+.activity-feed {
+  position: relative;
+  
+  &::after {
+    border-left: .1rem solid $gray-400;
+    height: 100%;
+    content: '';
+    position: absolute;
+    left: -1.4rem;
+    top: 1.5rem;
+  }
+
+  &:last-child::after {
+    content: none;
+  }
+}
