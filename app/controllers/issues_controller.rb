@@ -4,6 +4,9 @@ class IssuesController < ApplicationController
   before_action :set_actions, only: [:show, :edit]
 
   def index
+    @open_issues_count = @project.issues.where(status: 'open').count
+    @closed_issues_count = @project.issues.where(status: 'closed').count
+    @issues_count = @project.issues.count
   end
 
   def show

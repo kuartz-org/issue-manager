@@ -1,0 +1,22 @@
+.filters {
+  display: flex;
+  border-bottom: 2px solid $gray-300;
+  position: relative;
+
+  .filter {
+    position: relative;
+    bottom: -2px;
+    margin-right: 1rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      font-weight: 600;
+      border-bottom: 2px solid $blue;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

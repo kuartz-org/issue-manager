@@ -12,7 +12,7 @@ en:
 
   issues:
     index:
-      new: Open the first issue
+      new: New issue
     show:
       new: New issue
       close: Close issue
@@ -33,3 +33,6 @@ en:
   closed: Closed
   ago: ago
   by: by
+  show: Show
+  open: Open
+  all: All

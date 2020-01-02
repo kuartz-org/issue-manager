@@ -1,0 +1,24 @@
+.shadow-sm.px-3.py-1.bg-white.rounded.my-3
+  .d-flex.justify-content-between.align-items-end
+    div
+      = link_to issue.title, project_issue_path(@project, issue), class: 'font-medium text-gray-900'
+
+      div
+      span.text-sm.ml-1.text-gray-600
+        | #
+        => issue.id
+        | ꞏ
+
+      = render 'timestamp',
+        action: 'opened',
+        date: issue.created_at,
+        user: issue.actions.first.user,
+        passive_sentence: true
+
+    - last_edit_action = issue.actions.includes(:user).order(:created_at).where(title: 'edited').last
+    - if last_edit_action
+      = render 'timestamp',
+        action: 'edited',
+        date: last_edit_action.created_at,
+        user: last_edit_action.user,
+        passive_sentence: true

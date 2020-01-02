@@ -2,7 +2,7 @@
   .shadow-sm.p-3.bg-white.rounded.mt-3.mb-4
     = form.input :title
     = form.label :description, class: 'rich-text-area-label'
-    = form.rich_text_area :description, class: 'form-group trix-editor-text-area'
+    = form.rich_text_area :description, class: 'form-group trix-editor-text-area', placeholder: t('simple_form.placeholders.issue.description')
   
     .d-flex.justify-content-end
       - if @issue.persisted?

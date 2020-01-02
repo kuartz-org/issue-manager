@@ -1,8 +1,8 @@
-.d-flex.align-items-center
-  => link_to Project.model_name.human(count: 2), projects_path, class: 'btn btn-sm btn-link'
+.d-flex.align-items-center.mt-3.text-sm
+  = link_to Project.model_name.human(count: 2), projects_path, class: 'mr-1 text-gray-700'
   i.far.fa-long-arrow-alt-right
-  .btn-aligned-text
-    =< @project.title
+  span.ml-1.text-gray-900
+    = @project.title
 
 hr
 

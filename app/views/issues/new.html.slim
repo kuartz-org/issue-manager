@@ -1,11 +1,11 @@
-.d-flex.align-items-center
-  => link_to Project.model_name.human(count: 2), projects_path, class: 'btn btn-sm btn-link'
+.d-flex.align-items-center.mt-3.text-sm
+  = link_to Project.model_name.human(count: 2), projects_path, class: 'mr-1 text-gray-700'
   i.far.fa-long-arrow-alt-right
-  =<> link_to @project.title, project_path(@project), class: 'btn btn-sm btn-link'
+  = link_to @project.title, project_path(@project), class: 'mx-1 text-gray-700'
   i.far.fa-long-arrow-alt-right
-  =<> link_to Issue.model_name.human(count: 2), project_issues_path(@project), class: 'btn btn-sm btn-link'
-  i.far.fa-long-arrow-alt-right>
-  .btn-aligned-text
+  = link_to Issue.model_name.human(count: 2), project_issues_path(@project), class: 'mx-1 text-gray-700'
+  i.far.fa-long-arrow-alt-right
+  span.ml-1.text-gray-900
     = t ('.title')
 
 hr
