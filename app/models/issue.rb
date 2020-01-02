@@ -10,6 +10,8 @@ class Issue < ApplicationRecord
 
   validates :title, presence: true
 
+  has_rich_text :description
+
   def closed?
     status == 'closed'
   end

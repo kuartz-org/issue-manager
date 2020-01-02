@@ -1,9 +1,10 @@
-p
-  => link_to Project.model_name.human(count: 2), projects_path
-  i.far.fa-chevron-right.fa-xs
-  =<> link_to @project.title, project_path(@project)
-  i.far.fa-chevron-right.fa-xs
-  =< Issue.model_name.human(count: 2)
+.d-flex.align-items-center
+  => link_to Project.model_name.human(count: 2), projects_path, class: 'btn btn-sm btn-link'
+  i.far.fa-long-arrow-alt-right
+  =<> link_to @project.title, project_path(@project), class: 'btn btn-sm btn-link'
+  i.far.fa-long-arrow-alt-right
+  .btn-aligned-text
+    =< Issue.model_name.human(count: 2)
 
 hr
 

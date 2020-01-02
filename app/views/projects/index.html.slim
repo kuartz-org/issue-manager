@@ -1,4 +1,8 @@
-p = Project.model_name.human(count: 2)
+.d-flex.align-items-center
+  .btn-aligned-text
+   = Project.model_name.human(count: 2)
+
+hr
 
 - @projects.each do |project|
   = link_to project_path(project) do

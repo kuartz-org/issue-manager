@@ -1,11 +1,12 @@
-= simple_form_for [@project, @issue] do |f|
+= simple_form_for [@project, @issue] do |form|
   .shadow-sm.p-3.bg-white.rounded.mt-3.mb-4
-    = f.input :title
-    = f.input :description
-
+    = form.input :title
+    = form.label :description, class: 'rich-text-area-label'
+    = form.rich_text_area :description, class: 'form-group trix-editor-text-area'
+  
     .d-flex.justify-content-end
       - if @issue.persisted?
         = link_to t('helpers.cancel'), project_issue_path(@project, @issue), class: 'btn btn-sm btn-light mr-3'
       - else
         = link_to t('helpers.cancel'), project_issues_path(@project), class: 'btn btn-sm btn-light mr-3'
-      = f.button :submit, class: 'btn btn-sm btn-success'
+      = form.button :submit, class: 'btn btn-sm btn-success'

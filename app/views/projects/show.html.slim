@@ -1,7 +1,8 @@
-p
-  => link_to Project.model_name.human(count: 2), projects_path
-  i.far.fa-chevron-right.fa-xs
-  =< @project.title
+.d-flex.align-items-center
+  => link_to Project.model_name.human(count: 2), projects_path, class: 'btn btn-sm btn-link'
+  i.far.fa-long-arrow-alt-right
+  .btn-aligned-text
+    =< @project.title
 
 hr
 
