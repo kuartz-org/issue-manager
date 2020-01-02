@@ -1,15 +1,24 @@
 class IssuesController < ApplicationController
   before_action :set_project, only: [:index, :show, :new, :create, :edit, :update, :close]
-  before_action :set_issue, only: [:show, :edit, :update, :close]
-  before_action :set_actions, only: [:show, :edit]
+  before_action :set_enriched_issue, only: [:show, :edit]
+  before_action :set_issue, only: [:update, :close]
 
   def index
     @open_issues_count = @project.issues.where(status: 'open').count
     @closed_issues_count = @project.issues.where(status: 'closed').count
     @issues_count = @project.issues.count
+
+    
+    params[:status] = Issue.status.values.push('all').include?(params[:status]) ? params[:status] : 'open'
+    
+    @issues = @project.issues
+    @issues = @issues.where(status: params[:status]) unless params[:status] == 'all'
+    @issues = IssueQuery.relation(@issues).include_actions
+    @issues = IssuePresenter.wrap(@issues)
   end
 
   def show
+    @issue = IssuePresenter.new(@issue)
   end
 
   def new
@@ -32,6 +41,7 @@ class IssuesController < ApplicationController
   end
 
   def edit
+    @issue = IssuePresenter.new(@issue)
   end
 
   def update
@@ -61,8 +71,12 @@ class IssuesController < ApplicationController
     @project = current_user.projects.find(params[:project_id])
   end
 
+  def set_enriched_issue
+    @issue = IssueQuery.relation(@project.issues).include_actions.find(params[:id])
+  end
+
   def set_issue
-    @issue = @project.issues.includes(actions: :user).find(params[:id])
+    @issue = IssueQuery.relation(@project.issues).include_actions.find(params[:id])
   end
 
   def issue_params
@@ -70,12 +84,5 @@ class IssuesController < ApplicationController
       :title,
       :description
     )
-  end
-
-  def set_actions
-    @actions = @issue.actions.includes(:user).order(:created_at)
-    @create_action = @actions.first
-    @last_edit_action = @actions.where(title: 'edited').last
-    @actions = @actions.where.not(title: 'opened')
   end
 end

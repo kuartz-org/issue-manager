@@ -18,7 +18,7 @@ hr
     = render 'timestamp',
       action: 'opened',
       date: @issue.created_at,
-      user: @create_action.user,
+      user: @issue.create_action.user,
       passive_sentence: true
 
   div
@@ -28,4 +28,4 @@ hr
 
 = render 'form'
 
-= render 'activity_feed', actions: @actions
+= render 'activity_feed', actions: @issue.feeds

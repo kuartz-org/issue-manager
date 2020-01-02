@@ -15,10 +15,12 @@
         user: issue.actions.first.user,
         passive_sentence: true
 
-    - last_edit_action = issue.actions.includes(:user).order(:created_at).where(title: 'edited').last
-    - if last_edit_action
-      = render 'timestamp',
-        action: 'edited',
-        date: last_edit_action.created_at,
-        user: last_edit_action.user,
-        passive_sentence: true
+    div
+      - if issue.closed?
+        .text-right.text-gray-700 = t('closed').upcase
+      - if issue.last_edit_action
+        = render 'timestamp',
+          action: 'edited',
+          date: issue.last_edit_action.created_at,
+          user: issue.last_edit_action.user,
+          passive_sentence: true

@@ -4,15 +4,21 @@
   position: relative;
 
   .filter {
+    color: $black;
     position: relative;
     bottom: -2px;
     margin-right: 1rem;
+    padding: 0 0.3rem;
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
 
     &.active {
       font-weight: 600;
       border-bottom: 2px solid $blue;
+    }
+
+    &:first-child {
+      padding-left: 0;
     }
 
     &:last-child {

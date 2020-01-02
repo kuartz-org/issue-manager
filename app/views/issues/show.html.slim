@@ -19,7 +19,7 @@ hr
     = render 'timestamp',
       action: 'opened',
       date: @issue.created_at,
-      user: @create_action.user,
+      user: @issue.create_action.user,
       passive_sentence: true
 
   div
@@ -35,11 +35,11 @@ hr
   .trix-editor-text-area == @issue.description
 
   .mt-1
-    - if @last_edit_action
+    - if @issue.last_edit_action
       = render 'timestamp',
         action: 'edited',
-        date: @issue.updated_at,
-        user: @last_edit_action.user,
+        date: @issue.last_edit_action.created_at,
+        user: @issue.last_edit_action.user,
         passive_sentence: true
 
-= render 'activity_feed', actions: @actions
+= render 'activity_feed', actions: @issue.feeds
