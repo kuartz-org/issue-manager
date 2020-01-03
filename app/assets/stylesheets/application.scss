@@ -8,7 +8,8 @@
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
-@import "./actiontext";
+@import "./plugins/actiontext";
+@import "./plugins/trix.scss";
 
 // Your CSS partials
 @import "layouts/index";
