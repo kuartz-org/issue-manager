@@ -19,7 +19,9 @@ hr
       = t 'all'
       .badge.badge-pill.badge-secondary =< @issues_count
 
-  = link_to t('.new'), new_project_issue_path(@project), class: 'btn btn-outline-success btn-sm'
+  = link_to new_project_issue_path(@project), class: 'btn btn-outline-success btn-sm' do
+    i.fad.mr-2.fa-lg.fa-plus-square
+    =< t('.new')
 
 - if @issues.any?
   - @issues.each do |issue|
@@ -29,4 +31,6 @@ hr
     = image_tag 'undraw_no_data.svg', width: 200
   p.text-center.mt-3.text-muted = Issue.model_name.human(count: 0)
   .d-flex.justify-content-center.mt-3
-    = link_to t('.new'), new_project_issue_path(@project), class: 'btn btn-outline-success btn-sm'
+    = link_to new_project_issue_path(@project), class: 'btn btn-outline-success btn-sm' do
+      i.fad.mr-2.fa-lg.fa-plus-square
+      =< t('.new')

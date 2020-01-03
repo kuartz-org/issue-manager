@@ -2,13 +2,24 @@ en:
   activerecord:
     models:
       issue:
-        zero: No issues yet
+        zero: No issues
         one: Issue
         other: Issues
       project:
-        zero: No projects yet
+        zero: No projects
         one: Project
         other: Projects
+
+  open_issue:
+    zero: No open issues
+    one: 1 open issue
+    other: "%{count} open issues"
+
+  user:
+    zero: users
+    one: user
+    other: users
+  
 
   issues:
     index:
@@ -20,6 +31,10 @@ en:
       title: New issue
     edit:
       title: Edit issue
+  
+  projects:
+    index:
+      new: New project
 
   helpers:
     submit:

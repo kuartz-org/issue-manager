@@ -18,7 +18,6 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @issue = IssuePresenter.new(@issue)
   end
 
   def new
@@ -29,11 +28,7 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new(issue_params)
 
     if @issue.save
-      @issue.actions.create!(
-        title: :opened,
-        user: current_user
-      )
-
+      create_related_action(:opened)
       redirect_to project_issue_path(@project, @issue)
     else
       render :new
@@ -41,15 +36,11 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    @issue = IssuePresenter.new(@issue)
   end
 
   def update
     if @issue.update(issue_params)
-      @issue.actions.create(
-        title: :edited,
-        user: current_user
-      )
+      create_related_action(:edited)
       redirect_to project_issue_path(@project, @issue)
     else
       render :edit
@@ -58,14 +49,18 @@ class IssuesController < ApplicationController
 
   def close
     @issue.close!
-    @issue.actions.create(
-      title: :closed,
-      user: current_user
-    )
+    create_related_action(:closed)
     redirect_to project_issue_path(@project, @issue)
   end
 
   private
+
+  def create_related_action(action)
+    @issue.actions.create(
+      title: action,
+      user: current_user
+    )
+  end
 
   def set_project
     @project = current_user.projects.find(params[:project_id])
@@ -73,10 +68,11 @@ class IssuesController < ApplicationController
 
   def set_enriched_issue
     @issue = IssueQuery.relation(@project.issues).include_actions.find(params[:id])
+    @issue = IssuePresenter.new(@issue)
   end
 
   def set_issue
-    @issue = IssueQuery.relation(@project.issues).include_actions.find(params[:id])
+    @issue = @project.issues.find(params[:id])
   end
 
   def issue_params

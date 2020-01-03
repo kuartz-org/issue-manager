@@ -1,12 +1,30 @@
 .d-flex.align-items-center.mt-3.text-sm
-  span.ml-1.text-gray-900 = Project.model_name.human(count: 2)
+  span.text-gray-900 = Project.model_name.human(count: 2)
 
 hr
 
-- @projects.each do |project|
-  = link_to project_path(project) do
-    h2 = project.title
-    p
-      - if project.issues.count.positive?
-        => project.issues.count
-      = Issue.model_name.human(count: project.issues.count)
+.d-flex.justify-content-between
+  .filters
+    = link_to projects_path(filter: 'all'), class: "filter#{' active' if params[:filter] == 'all'}" do
+      = t 'all'
+      .badge.badge-pill.badge-secondary =< @projects_count
+
+  = link_to new_project_path, class: 'btn btn-outline-success btn-sm' do
+    i.fad.mr-2.fa-lg.fa-plus-square
+    =< t('.new')
+
+.row.mt-3
+  - @projects.each do |project|
+    .col-3
+      .shadow-sm.px-3.py-1.bg-white.rounded
+        = link_to project.title, project_path(project), class: "font-medium text-gray-900"
+        .d-flex.align-items-center.justify-content-between.text-gray-600.text-sm
+          = t 'open_issue', count: project.open_issues_count
+
+          div
+            = project.users_count
+            i.fad.fa-sm.ml-1 class=("fa-#{project.users_count.eql?(1) ? 'user' : 'users'}")
+  .col-3
+    = link_to '#', class: 'btn btn-outline-secondary w-100 h-100 d-inline-block d-flex align-items-center justify-content-center' do
+      i.fad.mr-2.fa-lg.fa-plus-square
+      =< t('.new')
