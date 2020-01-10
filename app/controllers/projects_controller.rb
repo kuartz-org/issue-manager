@@ -1,9 +1,18 @@
 class ProjectsController < ApplicationController
   def index
-    params[:filter] = ['all'].include?(params[:filter]) ? params[:filter] : 'all'
+    params[:filter] = ['with_open_issues', 'all'].include?(params[:filter]) ? params[:filter] : 'with_open_issues'
+
+
 
     @projects_count = current_user.projects.count
-    @projects = ProjectQuery.relation(current_user.projects)
+    @projects_with_open_issues_count = current_user.projects.includes(:issues).where(issues: { status: 'open' }).count
+
+    if params[:filter] == 'with_open_issues'
+      @projects = ProjectQuery.relation(current_user.projects.includes(:issues).where(issues: { status: 'open' }))
+    else
+      @projects = ProjectQuery.relation(current_user.projects)
+    end
+
     @projects = ProjectPresenter.wrap(@projects)
   end
 

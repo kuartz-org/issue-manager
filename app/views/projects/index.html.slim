@@ -5,6 +5,9 @@ hr
 
 .d-flex.justify-content-between
   .filters
+    = link_to projects_path(filter: 'with_open_issues'), class: "filter#{' active' if params[:filter] == 'with_open_issues'}" do
+      = t 'with_open_issues'
+      .badge.badge-pill.badge-secondary =< @projects_with_open_issues_count
     = link_to projects_path(filter: 'all'), class: "filter#{' active' if params[:filter] == 'all'}" do
       = t 'all'
       .badge.badge-pill.badge-secondary =< @projects_count
