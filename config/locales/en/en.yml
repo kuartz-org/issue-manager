@@ -52,14 +52,17 @@ en:
   comment_and_close_issue: Comment & close issue
   comment_and_reopen_issue: Comment & reopen issue
 
-  opened: Opened
-  edited: Edited
-  closed: Closed
-  reopened: Reopened
-  commented: Commented
   ago: ago
-  by: by
-  show: Show
-  open: Open
   all: All
+  by: by
+  closed: Closed
+  commented: Commented
+  edited: Edited
+  open: Open
+  opened: Opened
+  reopened: Reopened
+  show: Show
+  settings: Settings
+  sign_out: Sign out
   with_open_issues: With open issues
+  you: You

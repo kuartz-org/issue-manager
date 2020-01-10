@@ -12,9 +12,12 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_pack_tag 'application', media: 'all'
   body
-    .container.mb-5
-      = render 'shared/flashes'
-      = yield
+    / = render 'shared/flashes'
+    .d-flex
+      = render 'shared/side_menu'
+
+      .container
+        = yield
 
     = javascript_include_tag 'application'
     = javascript_pack_tag 'application'

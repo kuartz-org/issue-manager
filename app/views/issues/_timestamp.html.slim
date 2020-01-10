@@ -4,9 +4,9 @@ span.text-sm.ml-1.text-gray-600
     =< time_ago_in_words(date)
     =< t 'ago'
     =< t 'by'
-    span.text-gray-800.font-medium =< user.email
+    span.text-gray-800.font-medium =< user == current_user ? t('you') : user.email
   - else
-    span.text-gray-800.font-medium = user.email
+    span.text-gray-800.font-medium = user == current_user ? t('you') : user.email
     =< t(action).downcase
     =< time_ago_in_words(date)
     =< t 'ago'
