@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new] do
     resources :issues, only: [:index, :show, :new, :create, :edit, :update] do
       member do
+        put 'reopen'
         put 'close'
       end
     end
   end
 
+  resources :comments, only: [:create]
 end

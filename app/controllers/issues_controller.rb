@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
-  before_action :set_project, only: [:index, :show, :new, :create, :edit, :update, :close]
+  before_action :set_project
   before_action :set_enriched_issue, only: [:show, :edit]
-  before_action :set_issue, only: [:update, :close]
+  before_action :set_issue, only: [:update, :reopen, :close]
 
   def index
     @open_issues_count = @project.issues.where(status: 'open').count
@@ -18,6 +18,7 @@ class IssuesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -36,6 +37,7 @@ class IssuesController < ApplicationController
   end
 
   def edit
+    @comment = Comment.new
   end
 
   def update
@@ -45,6 +47,12 @@ class IssuesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def reopen
+    @issue.reopen!
+    create_related_action(:reopened)
+    redirect_to project_issue_path(@project, @issue)
   end
 
   def close

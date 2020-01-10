@@ -1,4 +1,4 @@
-.activity-feed {
+.feed {
   position: relative;
   
   &::after {
@@ -6,7 +6,7 @@
     height: 100%;
     content: '';
     position: absolute;
-    left: -1.4rem;
+    left: -1.3rem;
     top: 1.5rem;
   }
 

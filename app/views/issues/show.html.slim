@@ -23,7 +23,10 @@ hr
       passive_sentence: true
 
   div
-    - unless @issue.closed?
+    - if @issue.closed?
+      = link_to reopen_project_issue_path(@project, @issue), method: :put, class: 'btn btn-outline-primary btn-sm mr-2' do
+        =< t('.reopen')
+    - else
       = link_to close_project_issue_path(@project, @issue), method: :put, class: 'btn btn-outline-warning btn-sm mr-2' do
         i.fad.mr-2.fa-lg.fa-times-square
         =< t('.close')
@@ -46,4 +49,4 @@ hr
         user: @issue.last_edit_action.user,
         passive_sentence: true
 
-= render 'activity_feed', actions: @issue.feeds
+= render 'issues/issue_feeds/index', issue_feeds: @issue.issue_feeds

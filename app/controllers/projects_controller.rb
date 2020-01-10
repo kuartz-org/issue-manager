@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
     params[:filter] = ['all'].include?(params[:filter]) ? params[:filter] : 'all'
 
     @projects_count = current_user.projects.count
-    @projects = ProjectQuery.relation(current_user.projects).with_open_issues_count
+    @projects = ProjectQuery.relation(current_user.projects)
     @projects = ProjectPresenter.wrap(@projects)
   end
 

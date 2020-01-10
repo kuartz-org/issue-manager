@@ -1,7 +1,7 @@
 .shadow-sm.px-3.py-1.bg-white.rounded.my-3
   .d-flex.justify-content-between.align-items-end
     div
-      = link_to issue.title, project_issue_path(@project, issue), class: 'font-medium text-gray-900'
+      = link_to "#{"[#{t('closed').upcase}] " if issue.closed?}#{issue.title}", project_issue_path(@project, issue), class: 'font-medium text-gray-900'
 
       div
       span.text-sm.ml-1.text-gray-600
@@ -16,8 +16,15 @@
         passive_sentence: true
 
     div
-      - if issue.closed?
-        .text-right.text-gray-700 = t('closed').upcase
+      - if issue.comments.count.positive?
+        .text-right.text-sm.text-gray-700.font-medium
+          i.fad.fa-comment-alt-dots.mr-1
+          = issue.comments.count
+      - else
+        .text-right.text-sm.text-gray-500
+          i.fad.fa-comment-alt-dots.mr-1
+          | 0
+
       - if issue.last_edit_action
         = render 'timestamp',
           action: 'edited',

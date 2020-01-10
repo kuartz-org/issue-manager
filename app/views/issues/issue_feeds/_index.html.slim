@@ -1,0 +1,24 @@
+ul.fa-ul
+  - issue_feeds.each do |issue_feed|
+    - if issue_feed.feed_type == 'Action'
+      = render 'issues/issue_feeds/action', action: issue_feed.feed
+    - if issue_feed.feed_type == 'Comment'
+      = render 'issues/issue_feeds/comment', comment: issue_feed.feed
+
+.row
+  .col-2
+  .col-10
+    = simple_form_for @comment do |form|
+      = hidden_field_tag :project_id, @project.id
+      = hidden_field_tag :issue_id, @issue.id
+
+      .shadow-sm.p-3.bg-white.rounded.mt-3.mb-2
+        = form.label :content, class: 'rich-text-area-label'
+        = form.rich_text_area :content, class: 'form-group trix-editor-text-area', placeholder: t('simple_form.placeholders.comment.content')
+
+      .d-flex
+        = form.button :submit, class: 'btn btn-sm btn-success mr-2'
+        - if @issue.closed?
+          = form.button :submit, name: 'reopen', value: t('comment_and_reopen_issue'), class: 'btn btn-sm btn-outline-primary'
+        - else
+          = form.button :submit, name: 'close', value: t('comment_and_close_issue'), class: 'btn btn-sm btn-outline-warning'

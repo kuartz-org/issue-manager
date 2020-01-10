@@ -1,0 +1,8 @@
+li.d-flex.mb-4.feed
+  span.fa-li
+    i.mr-2.fad.fa-lg class=(icon_for_action(action.title))
+  =< render 'timestamp',
+    action: action.title,
+    date: action.created_at,
+    user: action.user,
+    passive_sentence: false

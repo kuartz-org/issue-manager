@@ -1,0 +1,11 @@
+li.d-flex.mb-4.feed
+  span.fa-li
+    i.mr-2.fad.fa-lg.fa-comment-alt-dots
+  .flex-fill
+    =< render 'timestamp',
+      action: 'commented',
+      date: comment.created_at,
+      user: comment.user,
+      passive_sentence: false
+    .shadow-sm.px-3.pt-1.pb-1.bg-white.rounded.mt-1
+      .trix-editor-text-area.comment == comment.content

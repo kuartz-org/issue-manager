@@ -14,6 +14,11 @@ en:
     placeholders:
       issue:
         description: Add a full description of the issue
+      comment:
+        content: Write a comment here
+    labels:
+      comment:
+        content: Write a comment
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

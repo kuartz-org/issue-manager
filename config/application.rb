@@ -9,12 +9,17 @@ Bundler.require(*Rails.groups)
 module KuartzIssueManager
   class Application < Rails::Application
     config.generators do |generate|
-          generate.assets false
-          generate.helper false
-          generate.test_framework  :test_unit, fixture: false
-        end
+      generate.assets false
+      generate.helper false
+      generate.javascripts false
+      generate.channel assets: false
+      generate.stylesheets false
+      generate.test_framework false
+    end
+
     config.i18n.default_locale = :fr
     config.i18n.fallbacks = [:en]
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
