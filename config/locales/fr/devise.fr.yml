@@ -2,6 +2,9 @@
 
 fr:
   devise:
+    forgot_your_password: Mot de passe oublié ?
+    sign_in: Se connecter
+    send_me_reset_password_instructions: Changer de mot de passe
     confirmations:
       confirmed: "Votre compte a été validé."
       send_instructions: "Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes."

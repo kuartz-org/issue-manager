@@ -1,4 +1,4 @@
-h3 = t(".forgot_your_password")
+h3 = t("devise.forgot_your_password")
 
 = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = f.error_notification
@@ -8,9 +8,8 @@ h3 = t(".forgot_your_password")
               autofocus: true,
               input_html: { autocomplete: "email" }
 
+  .d-flex.justify-content-between.align-items-center
+    = f.button :submit, t("devise.send_me_reset_password_instructions"), class: 'btn btn-primary btn-sm'
 
-  = f.button :submit, t(".send_me_reset_password_instructions"), class: 'btn btn-primary btn-sm'
-
-  - if controller_name != 'sessions'
-    hr
-    = link_to t(".sign_in"), new_session_path(resource_name), class: 'btn btn-link btn-sm'
+    - if controller_name != 'sessions'
+      = link_to t("devise.sign_in"), new_session_path(resource_name), class: 'btn btn-link btn-sm'

@@ -16,7 +16,7 @@ fr:
 
   open_issue:
     zero: Pas de requête ouverte
-    one: 1 requête ouvert
+    one: 1 requête ouverte
     other: "%{count} requêtes ouvertes"
 
   user:

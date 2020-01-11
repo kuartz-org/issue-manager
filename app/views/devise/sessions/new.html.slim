@@ -14,4 +14,4 @@ h3 = t "welcome"
     = f.button :submit, t(".sign_in"), class: 'btn btn-primary btn-sm'
 
     - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-      = link_to t(".forgot_your_password"), new_password_path(resource_name), class: 'btn btn-sm btn-link'
+      = link_to t("devise.forgot_your_password"), new_password_path(resource_name), class: 'btn btn-sm btn-link'

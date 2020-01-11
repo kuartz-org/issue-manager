@@ -19,7 +19,3 @@ hr
         = link_to project.title, project_path(project), class: "font-medium text-gray-900"
         .d-flex.align-items-center.justify-content-between.text-gray-600.text-sm
           = t 'open_issue', count: project.open_issues_count
-
-          div
-            = project.users_count
-            i.fad.fa-sm.ml-1 class=("fa-#{project.users_count.eql?(1) ? 'user' : 'users'}")
