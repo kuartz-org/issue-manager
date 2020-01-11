@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
   def index
-    params[:filter] = ['with_open_issues', 'all'].include?(params[:filter]) ? params[:filter] : 'with_open_issues'
-
-
-
     @projects_count = current_user.projects.count
+    return redirect_to project_path(current_user.projects.first) if @projects_count == 1
+
+    params[:filter] = ['with_open_issues', 'all'].include?(params[:filter]) ? params[:filter] : 'with_open_issues'
     @projects_with_open_issues_count = current_user.projects.includes(:issues).where(issues: { status: 'open' }).count
 
     if params[:filter] == 'with_open_issues'

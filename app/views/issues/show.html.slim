@@ -14,7 +14,7 @@ hr
 .d-flex.justify-content-between
   div
     .badge.badge-pill class=(@issue.closed? ? 'badge-info' : 'badge-success')
-      = @issue.status.capitalize
+      = t(@issue.status).capitalize
 
     = render 'timestamp',
       action: 'opened',

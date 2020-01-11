@@ -12,10 +12,6 @@ hr
       = t 'all'
       .badge.badge-pill.badge-secondary =< @projects_count
 
-  = link_to new_project_path, class: 'btn btn-outline-success btn-sm' do
-    i.fad.mr-2.fa-lg.fa-plus-square
-    =< t('.new')
-
 .row.mt-3
   - @projects.each do |project|
     .col-3
@@ -27,7 +23,3 @@ hr
           div
             = project.users_count
             i.fad.fa-sm.ml-1 class=("fa-#{project.users_count.eql?(1) ? 'user' : 'users'}")
-  .col-3
-    = link_to '#', class: 'btn btn-outline-secondary w-100 h-100 d-inline-block d-flex align-items-center justify-content-center' do
-      i.fad.mr-2.fa-lg.fa-plus-square
-      =< t('.new')

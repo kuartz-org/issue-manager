@@ -1,0 +1,70 @@
+fr:
+  activerecord:
+    models:
+      issue:
+        zero: Pas de requête
+        one: Requête
+        other: Requêtes
+      project:
+        zero: Pas de projet
+        one: Projet
+        other: Projets
+      comment:
+          zero: Pas de commentaire
+          one: Commentaire
+          other: Commentaires
+
+  open_issue:
+    zero: Pas de requête ouverte
+    one: 1 requête ouvert
+    other: "%{count} requêtes ouvertes"
+
+  user:
+    zero: utilisateur
+    one: utilisateur
+    other: utilisateurs
+
+  issues:
+    index:
+      new: Nouvelle requête
+    show:
+      new: Nouvelle requête
+      close: Clore la requête
+      reopen: Re-ouvrir la requête
+    new:
+      title: Nouvelle requête
+    edit:
+      title: Modifier la requête
+  
+  projects:
+    index:
+      new: Nouveau projet
+
+  helpers:
+    submit:
+      issue:
+        create: "Ouvrir %{model}"
+        update: "Enregistrer les modifications"
+      comment:
+        create: "Commenter"
+    cancel: Annuler
+
+  comment_and_close_issue: Commenter & clore la requête
+  comment_and_reopen_issue: Commenter & re-ouvrir la requête
+
+  ago: ''
+  ago_alt: 'il y a'
+  all: Tout
+  by: par
+  closed: Clos
+  commented: Commenté
+  edited: Modifié
+  open: Ouvert
+  opened: Ouvert
+  reopened: Re-ouvert
+  show: Voir
+  sign_out: Déconnexion
+  title: Gestionnaire de requêtes
+  welcome: Bienvenue !
+  with_open_issues: Avec des requêtes ouvertes
+  you: Vous

@@ -1,9 +1,9 @@
-en:
+fr:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Oui'
+    "no": 'Non'
     required:
-      text: 'required'
+      text: 'requis'
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
@@ -13,17 +13,17 @@ en:
     # Examples
     placeholders:
       user:
-        email: john.doe@example.com
-        password: Your password
+        email: michel.durand@example.com
+        password: Votre mot de passe
       issue:
-        description: Add a full description of the issue
+        description: Rédiger la requête en détails
       comment:
-        content: Write a comment here
+        content: Écrire un commentaire ici
     labels:
       user:
         email: Email
       comment:
-        content: Write a comment
+        content: Écrire un commentaire
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

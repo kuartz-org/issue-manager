@@ -53,6 +53,7 @@ en:
   comment_and_reopen_issue: Comment & reopen issue
 
   ago: ago
+  ago_alt: ''
   all: All
   by: by
   closed: Closed
@@ -62,7 +63,8 @@ en:
   opened: Opened
   reopened: Reopened
   show: Show
-  settings: Settings
   sign_out: Sign out
+  title: Issue Manager
+  welcome: Welcome!
   with_open_issues: With open issues
   you: You

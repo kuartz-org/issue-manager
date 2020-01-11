@@ -20,6 +20,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'slim-rails'
 gem 'devise-i18n'
+gem 'http_accept_language'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
