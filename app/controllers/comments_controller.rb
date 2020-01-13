@@ -5,11 +5,11 @@ class CommentsController < ApplicationController
 
     if params[:reopen].present?
       @issue.reopen!
-      create_related_action(:reopened)
+      CreateRelatedActionService.new(issue_id: @issue.id, action: :reopened, user_id: current_user.id).call
       
     elsif params[:close].present?
       @issue.close!
-      create_related_action(:closed)
+      CreateRelatedActionService.new(issue_id: @issue.id, action: :closed, user_id: current_user.id).call
     end
 
     if @issue.comments.create(comment_params.merge(user: current_user))
@@ -21,12 +21,5 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
-  end
-
-  def create_related_action(action)
-    @issue.actions.create(
-      title: action,
-      user: current_user
-    )
   end
 end

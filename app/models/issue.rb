@@ -1,15 +1,15 @@
 class Issue < ApplicationRecord
   extend Enumerize
-
+  
+  belongs_to :project
   has_many :issue_feeds, dependent: :destroy
   has_many :actions,  through: :issue_feeds, source: :feed, source_type: 'Action'
   has_many :comments, through: :issue_feeds, source: :feed, source_type: 'Comment'
 
-  belongs_to :project
+  enumerize :status,   in: [:open, :closed]
+  enumerize :category, in: [:bug, :new_feature]
 
   before_create :set_default_status
-
-  enumerize :status, in: [:open, :closed]
 
   validates :title, presence: true
 

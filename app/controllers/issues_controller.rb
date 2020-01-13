@@ -29,7 +29,7 @@ class IssuesController < ApplicationController
     @issue = @project.issues.new(issue_params)
 
     if @issue.save
-      create_related_action(:opened)
+      CreateRelatedActionService.new(issue_id: @issue.id, action: :opened, user_id: current_user.id).call
       redirect_to project_issue_path(@project, @issue)
     else
       render :new
@@ -42,7 +42,7 @@ class IssuesController < ApplicationController
 
   def update
     if @issue.update(issue_params)
-      create_related_action(:edited)
+      CreateRelatedActionService.new(issue_id: @issue.id, action: :edited, user_id: current_user.id).call
       redirect_to project_issue_path(@project, @issue)
     else
       render :edit
@@ -51,24 +51,17 @@ class IssuesController < ApplicationController
 
   def reopen
     @issue.reopen!
-    create_related_action(:reopened)
+    CreateRelatedActionService.new(issue_id: @issue.id, action: :reopened, user_id: current_user.id).call
     redirect_to project_issue_path(@project, @issue)
   end
 
   def close
     @issue.close!
-    create_related_action(:closed)
+    CreateRelatedActionService.new(issue_id: @issue.id, action: :closed, user_id: current_user.id).call
     redirect_to project_issue_path(@project, @issue)
   end
 
   private
-
-  def create_related_action(action)
-    @issue.actions.create(
-      title: action,
-      user: current_user
-    )
-  end
 
   def set_project
     @project = current_user.projects.find(params[:project_id])
