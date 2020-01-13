@@ -21,6 +21,7 @@ gem 'webpacker'
 gem 'slim-rails'
 gem 'devise-i18n'
 gem 'http_accept_language'
+gem 'image_processing', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
