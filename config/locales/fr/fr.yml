@@ -2,9 +2,9 @@ fr:
   activerecord:
     models:
       issue:
-        zero: Pas de requête
-        one: Requête
-        other: Requêtes
+        zero: Pas de ticket
+        one: Ticket
+        other: Tickets
       project:
         zero: Pas de projet
         one: Projet
@@ -15,9 +15,9 @@ fr:
           other: Commentaires
 
   open_issue:
-    zero: Pas de requête ouverte
-    one: 1 requête ouverte
-    other: "%{count} requêtes ouvertes"
+    zero: Pas de ticket ouvert
+    one: 1 ticket ouverte
+    other: "%{count} tickets ouverts"
 
   user:
     zero: utilisateur
@@ -26,15 +26,15 @@ fr:
 
   issues:
     index:
-      new: Nouvelle requête
+      new: Nouveau ticket
     show:
-      new: Nouvelle requête
-      close: Clore la requête
-      reopen: Re-ouvrir la requête
+      new: Nouveau ticket
+      close: Clore le ticket
+      reopen: Re-ouvrir le ticket
     new:
-      title: Nouvelle requête
+      title: Nouveau ticket
     edit:
-      title: Modifier la requête
+      title: Modifier le ticket
   
   projects:
     index:
@@ -49,8 +49,8 @@ fr:
         create: "Commenter"
     cancel: Annuler
 
-  comment_and_close_issue: Commenter & clore la requête
-  comment_and_reopen_issue: Commenter & re-ouvrir la requête
+  comment_and_close_issue: Commenter & clore le ticket
+  comment_and_reopen_issue: Commenter & re-ouvrir le ticket
 
   ago: ''
   ago_alt: 'il y a'
@@ -64,7 +64,7 @@ fr:
   reopened: Re-ouvert
   show: Voir
   sign_out: Déconnexion
-  title: Gestionnaire de requêtes
+  title: Gestionnaire de tickets
   welcome: Bienvenue !
-  with_open_issues: Avec des requêtes ouvertes
+  with_open_issues: Avec des tickets ouverts
   you: Vous
